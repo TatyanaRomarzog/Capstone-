@@ -1,11 +1,12 @@
 # Step One- Fill out the two requested variables.
-
+export GITHUB_TOKEN='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'
+export GITHUB_USERNAME=tiffanyhunnicutt
 # Fill out the following values
 # The path of your repo on github. Don't include the whole URL, just the part after github.com/KenzieAcademy-SoftwareEngineering/
-export CAPSTONE_REPO_NAME=ata-capstone-project-bestjavaprogrammer
+export CAPSTONE_REPO_NAME=ata-capstone-project-TiffanyHunnicutt
 
 # Fill out the following value with the group name in all lowercase and no spaces or special characters.
-export GITHUB_GROUP_NAME=REPLACE_WITH_YOUR_GROUP_NAME
+export GITHUB_GROUP_NAME=ladiesWhoCode
 
 # Step Two - configure your shell to always have these variables.
 # For OSX / Linux
