@@ -6,14 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class ApplicationService { private CaseRepository caseRepository;
+public class ApplicationService {
+    private ApplicationRepository applicationRepository;
 
     @Autowired
-    public CaseService(CaseRepository caseRepository) {
-        this.caseRepository = caseRepository;
+    public ApplicationService(ApplicationRepository applicationRepository) {
+        this.applicationRepository = applicationRepository;
     }
 
-    public List<Case> findAllOpenCases() {
+    public List<Application> findAllOpenCases() {
         List<Case> cases = new ArrayList<>();
 
         Iterable<CaseRecord> caseRecordIterable = caseRepository.findAll();
