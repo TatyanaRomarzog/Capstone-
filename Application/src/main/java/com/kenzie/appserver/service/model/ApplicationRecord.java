@@ -74,25 +74,38 @@ import java.util.UUID;
             this.timestamp = timestamp;
         }
 
-        public void setDateCreated(String dateCreated) {
-            this.dateCreated = dateCreated;
+        public void setResume(File Resume) {
+            this.resume = resume;
         }
 
-        public void setReferrerId(String referrerId) {
-            this.referrerId = referrerId;
+        public void setReferences(List<String> references) {
+            this.references = references;
+        }
+
+        public void setWorkHistory(List<String> workHistory) {
+            this.workHistory = workHistory;
+        }
+
+        public void setJobCriteria(List<String> jobCriteria) {
+            this.jobCriteria = jobCriteria;
+        }
+
+        public void setCriteria(Criteria criteria) {
+            this.criteria = criteria;
         }
 
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-            CustomerRecord that = (CustomerRecord) o;
-            return Objects.equals(id, that.id);
+
+            ApplicationRecord that = (ApplicationRecord) o;
+            return Objects.equals(applicationId, that.applicationId);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(id);
+            return Objects.hash(applicationId);
         }
     }
 
