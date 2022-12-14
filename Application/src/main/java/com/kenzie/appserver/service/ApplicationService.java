@@ -14,77 +14,67 @@ public class ApplicationService {
         this.applicationRepository = applicationRepository;
     }
 
-    public List<Application> findAllOpenCases() {
-        List<Case> cases = new ArrayList<>();
+    public List<Application> createApplication() {
+        List<User> users = new ArrayList<>();
 
-        Iterable<CaseRecord> caseRecordIterable = caseRepository.findAll();
-        for (CaseRecord record : caseRecordIterable) {
-            //a check to see if the case is open
-            if (record.getOpenCase()) {
-                cases.add(new Case(UUID.fromString(record.getCaseId()),
+        Iterable<ApplicationRecord> applicationRecordIterable = applicationRepository.findAll();
+        for (ApplicationRecord record : applicationRecordIterable) {
+            //a check to see if the application is open
+            if (record.getOpenApplications()) {
+                record.add(new User(UUID.fromString(record.getApplicationId()),
                         record.getTimeStamp(),
-                        record.getTitle(),
-                        record.getAuthor(),
-                        record.getDescription(),
-                        record.getLocation(),
-                        record.getTimeDate(),
-                        record.getPotentialSuspects(),
-                        record.getOpenCase()));
+                        record.getResume(),
+                        record.getReferences(),
+                        record.getWorkHistory(),
+                        record.getJobCriteria(),
+                        record.getCriteria();
             }
         }
 
-        return cases;
+        return users;
     }
 
-    public Case findCaseByCaseId(String caseId) {
+    public Application getAllApplications(String applicationId) {
         //potentially implement cache and cache check later with cache if found then cache logic...
-        Case casesFromRepository = caseRepository.findById(caseId)
-                .map(caseMatch -> new Case(UUID.fromString(caseMatch.getCaseId()),
-                        caseMatch.getTimeStamp(),
-                        caseMatch.getTitle(),
-                        caseMatch.getAuthor(),
-                        caseMatch.getDescription(),
-                        caseMatch.getLocation(),
-                        caseMatch.getTimeDate(),
-                        caseMatch.getPotentialSuspects(),
-                        caseMatch.getOpenCase()))
+        Application applicationFromRepository = applicationRepository.findById(applicationId)
+                .map(applicationMatch -> new Application(UUID.fromString(applicationMatch.getApplicationId()),
+                        applicationMatch.getTimeStamp(),
+                        applicationMatch.getResume(),
+                        applicationMatch.getReferences(),
+                        applicationMatch.getWorkHistory(),
+                        applicationMatch.geJobCriterua(),
+                        applicationMatch.getCriteria();
                 .orElse(null);
-        return casesFromRepository;
+        return applicationsFromRepository;
     }
 
-    public Case addNewCase(Case caseToAdd) {
-        CaseRecord caseRecord = new CaseRecord();
-        caseRecord.setCaseId(caseToAdd.getCaseId().toString());
-        caseRecord.setTimeStamp(caseToAdd.getTimeStamp());
-        caseRecord.setTitle(caseToAdd.getTitle());
-        caseRecord.setAuthor(caseToAdd.getAuthor());
-        caseRecord.setDescription(caseToAdd.getDescription());
-        caseRecord.setLocation(caseToAdd.getLocation());
-        caseRecord.setTimeDate(caseToAdd.getTimeDate());
-        caseRecord.setPotentialSuspects(caseToAdd.getPotentialSuspects());
-        caseRecord.setOpenCase(caseToAdd.getOpenCase());
-        caseRepository.save(caseRecord);
-        return caseToAdd;
+    public Application getApplication(Application applicationsToAdd) {
+        ApplicationRecord applicationRecord = new ApplicationRecord();
+        applicationRecord.setApplicationId(applicationsToAdd.getApplicationId().toString());
+        applicationRecord.setTimeStamp(applicationToAdd.getTimeStamp());
+        applicationRecord.setResume(applicationToAdd.getResume());
+        applicationRecord.setReferences(applicationToAdd.getReferences());
+        applicationRecord.setWorkHistory(applicationToAdd.getWorkHistory());
+        applicationRecord.setJobCriteria(applicationToAdd.getJobCriteria());
+        applicationRecord.setCriteria(applicationToAdd.getCriteria());
+        return applicationsToAdd;
     }
 
-    public void updateCase(Case caseToUpdate) {
-        if (caseRepository.existsById(caseToUpdate.getCaseId().toString())) {
-            CaseRecord caseRecord = new CaseRecord();
-            caseRecord.setCaseId(caseToUpdate.getCaseId().toString());
-            caseRecord.setTimeStamp(caseToUpdate.getTimeStamp());
-            caseRecord.setTitle(caseToUpdate.getTitle());
-            caseRecord.setAuthor(caseToUpdate.getAuthor());
-            caseRecord.setDescription(caseToUpdate.getDescription());
-            caseRecord.setLocation(caseToUpdate.getLocation());
-            caseRecord.setTimeDate(caseToUpdate.getTimeDate());
-            caseRecord.setPotentialSuspects(caseToUpdate.getPotentialSuspects());
-            caseRecord.setOpenCase(caseToUpdate.getOpenCase());
-            caseRepository.save(caseRecord);
+    public void updateApplication(Application applicationToUpdate) {
+        if (ApplicationRepository.existsById(applicationToUpdate.getApplicationId().toString())) {
+            ApplicationRecord applicationRecord = new ApplicationRecord();
+            applicationRecord.setApplicationId(applicationToUpdate.getApplicationId().toString());
+            applicationRecord.setTimeStamp(applicationToUpdate.getTimeStamp());
+            applicationRecord.setResume(applicationToAdd.getResume());
+            applicationRecord.setReferences(applicationToAdd.getReferences());
+            applicationRecord.setWorkHistory(applicationToAdd.getWorkHistory());
+            applicationRecord.setJobCriteria(applicationToAdd.getJobCriteria());
+            applicationRecord.setCriteria(applicationToAdd.getCriteria());
         }
     }
 
-    public void deleteCase(String caseId) {
-        caseRepository.deleteById(caseId);
+    public void deleteApplication(String applicationId) {
+        applicationRepository.deleteById(applicationId);
     }
 }
 
