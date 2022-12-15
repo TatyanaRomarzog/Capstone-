@@ -1,5 +1,9 @@
 package com.kenzie.appserver.service;
 
+import com.kenzie.appserver.Application;
+import com.kenzie.appserver.repositories.ApplicationRepository;
+import com.kenzie.appserver.repositories.model.ApplicationRecord;
+import com.kenzie.appserver.service.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -34,7 +38,7 @@ public class ApplicationService {
         return users;
     }
 
-    public Application getAllApplications(String applicationId) {
+    public static Application getAllApplications(String applicationId) {
         //potentially implement cache and cache check later with cache if found then cache logic...
         Application applicationFromRepository = applicationRepository.findById(applicationId)
                 .map(applicationMatch -> new Application(UUID.fromString(applicationMatch.getApplicationId()),
