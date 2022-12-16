@@ -36,7 +36,7 @@ public class Resume {
         this.salaryDesire = salaryDesire;
     }
 
-    public Resume(String lastName, String state, UUID applicationId) {git
+    public Resume(String lastName, String state, UUID applicationId) {
         this.lastName = lastName;
         this.state = state;
         this.applicationId = applicationId;
