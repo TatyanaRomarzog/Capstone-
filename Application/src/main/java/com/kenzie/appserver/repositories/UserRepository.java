@@ -1,10 +1,10 @@
 package com.kenzie.appserver.repositories;
 
-import com.kenzie.appserver.repositories.model.ApplicationRecord;
+import com.kenzie.appserver.repositories.model.UserRecord;
 
 import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
 import org.springframework.data.repository.CrudRepository;
 
 @EnableScan
-public interface ApplicationRepository extends CrudRepository<ApplicationRecord, String> {
+public interface UserRepository extends CrudRepository<UserRecord, String> {
 }
