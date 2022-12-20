@@ -1,26 +1,56 @@
 package com.kenzie.appserver.service.model;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import org.joda.time.LocalDateTime;
 
-import java.io.File;
-import java.security.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 
+public class Application {
+    private final UUID userId;
+    private final UUID applicationId;
+    private final LocalDateTime timestamp;
+    private final Resume resume;
+    private final List<String> workHistory;
+    private final List<String> references;
+    private final Criteria jobCriteria;
 
+    public Application(UUID userId, UUID applicationId, LocalDateTime timestamp, Resume resume, List<String> workHistory,
+                       List<String> references, Criteria criteria) {
+        this.userId = userId;
+        this.applicationId = applicationId;
+        this.timestamp = timestamp;
+        this.resume = resume;
+        this.workHistory = new ArrayList<>(workHistory);
+        this.references = new ArrayList<>(references);
+        this.jobCriteria = criteria;
+    }
 
-    //Application Class:
-    //UUID applicationId *Partition key*
-    //Timestamp timeStamp (time that application was most recently edited)
-    //File Resume
-    //List<String> workHistory
-    //List<String> references
-    //Criteria jobCriteria
+    public UUID getUserId() {
+        return userId;
+    }
 
-    //constructor for all arguments
-    //getters, no setters
-    public class Application {
+    public UUID getApplicationId() {
+        return applicationId;
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public Resume getResume() {
+        return resume;
+    }
+
+    public List<String> getWorkHistory() {
+        return workHistory;
+    }
+
+    public List<String> getReferences() {
+        return references;
+    }
+
+    public Criteria getJobCriteria() {
+        return jobCriteria;
+    }
 }
