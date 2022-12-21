@@ -4,7 +4,6 @@ import com.kenzie.appserver.Application;
 import com.kenzie.appserver.controller.model.ApplicationCreateRequest;
 import com.kenzie.appserver.controller.model.ApplicationResponse;
 import com.kenzie.appserver.service.ApplicationService;
-import com.kenzie.appserver.service.model.ApplicationRecord;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
