@@ -33,7 +33,7 @@ public class Criteria {
         }
 
         this.positionTitle = positionTitle;
-        this.locations = locations;
+        this.locations = new ArrayList<>(locations);
         this.minimumSalary = minimumSalary;
         this.openJobsLimit = openJobsLimit;
     }
