@@ -9,5 +9,5 @@ import java.util.List;
 
 @EnableScan
 public interface ApplicationRepository extends CrudRepository<ApplicationRecord, String> {
-    List<ApplicationRecord> findByUserId(String userId);
+    List<ApplicationRecord> findByUsername(String username);
 }

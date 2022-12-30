@@ -1,72 +1,37 @@
 package com.kenzie.appserver.controller.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import java.util.List;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ResumeResponse {
 
-public class ApplicationUpdateRequest {
-
-    @NotEmpty
     @JsonProperty("firstName")
     private String firstName;
 
-    @NotEmpty
     @JsonProperty("lastName")
     private String lastName;
 
-    @NotEmpty
     @JsonProperty("homeAddress")
     private String homeAddress;
 
-    @NotEmpty
     @JsonProperty("phoneNumber")
     private String phoneNumber;
 
-    @NotEmpty
     @JsonProperty("emailAddress")
     private String emailAddress;
 
-    @NotEmpty
     @JsonProperty("objective")
     private String objective;
 
-    @NotEmpty
     @JsonProperty("education")
     private String education;
 
-    @NotEmpty
     @JsonProperty("experience")
     private String experience;
 
-    @NotEmpty
     @JsonProperty("skills")
     private String skills;
-
-    @NotEmpty
-    @JsonProperty("workHistory")
-    private List<String> workHistory;
-
-    @NotNull
-    @JsonProperty("references")
-    private List<String> references;
-
-    @NotEmpty
-    @JsonProperty("positionTitle")
-    private String positionTitle;
-
-    @NotNull
-    @JsonProperty("locations")
-    private List<String> locations;
-
-    @NotEmpty
-    @JsonProperty("minimumSalary")
-    private int minimumSalary;
-
-    @NotEmpty
-    @JsonProperty("openJobsLimit")
-    private int openJobsLimit;
 
     public String getFirstName() {
         return firstName;
@@ -138,53 +103,5 @@ public class ApplicationUpdateRequest {
 
     public void setSkills(String skills) {
         this.skills = skills;
-    }
-
-    public List<String> getWorkHistory() {
-        return workHistory;
-    }
-
-    public void setWorkHistory(List<String> workHistory) {
-        this.workHistory = workHistory;
-    }
-
-    public List<String> getReferences() {
-        return references;
-    }
-
-    public void setReferences(List<String> references) {
-        this.references = references;
-    }
-
-    public String getPositionTitle() {
-        return positionTitle;
-    }
-
-    public void setPositionTitle(String positionTitle) {
-        this.positionTitle = positionTitle;
-    }
-
-    public List<String> getLocations() {
-        return locations;
-    }
-
-    public void setLocations(List<String> locations) {
-        this.locations = locations;
-    }
-
-    public int getMinimumSalary() {
-        return minimumSalary;
-    }
-
-    public void setMinimumSalary(int minimumSalary) {
-        this.minimumSalary = minimumSalary;
-    }
-
-    public int getOpenJobsLimit() {
-        return openJobsLimit;
-    }
-
-    public void setOpenJobsLimit(int openJobsLimit) {
-        this.openJobsLimit = openJobsLimit;
     }
 }

@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @DynamoDBTable(tableName = "Application")
 public class ApplicationRecord {
-    private String userId;
+    private String username;
     private String applicationId;
     private String timestamp;
     private String resumeAsJson;
@@ -18,13 +18,13 @@ public class ApplicationRecord {
     private List<String> references;
     private String criteriaAsJson;
 
-    @DynamoDBIndexHashKey(globalSecondaryIndexName = "userId", attributeName = "userId")
-    public String getUserId() {
-        return userId;
+    @DynamoDBIndexHashKey(globalSecondaryIndexName = "username", attributeName = "username")
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @DynamoDBHashKey(attributeName = "applicationId")
@@ -86,11 +86,11 @@ public class ApplicationRecord {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ApplicationRecord that = (ApplicationRecord) o;
-        return Objects.equals(userId, that.userId) && Objects.equals(applicationId, that.applicationId);
+        return Objects.equals(username, that.username) && Objects.equals(applicationId, that.applicationId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, applicationId);
+        return Objects.hash(username, applicationId);
     }
 }

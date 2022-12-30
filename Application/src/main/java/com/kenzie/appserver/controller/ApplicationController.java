@@ -1,24 +1,23 @@
 package com.kenzie.appserver.controller;
 
-import com.kenzie.appserver.Application;
-import com.kenzie.appserver.controller.model.ApplicationCreateRequest;
-import com.kenzie.appserver.controller.model.ApplicationResponse;
+import com.kenzie.appserver.controller.model.*;
 import com.kenzie.appserver.service.ApplicationService;
+import com.kenzie.appserver.service.model.Application;
+import com.kenzie.appserver.service.model.Criteria;
+import com.kenzie.appserver.service.model.Resume;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
-import static java.util.UUID.randomUUID;
 //TODO: fix the endpoints
 
 @RestController
-@RequestMapping("/cases/{caseId}/evidence")
+@RequestMapping("/user/{username}/application")
 public class ApplicationController {
 
     private ApplicationService applicationService;
@@ -27,64 +26,110 @@ public class ApplicationController {
         this.applicationService = applicationService;
     }
 
+    @PostMapping
+    public ResponseEntity<ApplicationResponse> createApplication(@PathVariable("username") String username,
+                                                                 @RequestBody ApplicationCreateRequest createRequest) {
+        Application application = new Application(username,
+                UUID.randomUUID(),
+                LocalDateTime.now().toString(),
+                new Resume(createRequest.getFirstName(),
+                        createRequest.getLastName(),
+                        createRequest.getHomeAddress(),
+                        createRequest.getPhoneNumber(),
+                        createRequest.getEmailAddress(),
+                        createRequest.getObjective(),
+                        createRequest.getEducation(),
+                        createRequest.getExperience(),
+                        createRequest.getSkills()),
+                createRequest.getWorkHistory(),
+                createRequest.getReferences(),
+                new Criteria(createRequest.getPositionTitle(),
+                        createRequest.getLocations(),
+                        createRequest.getMinimumSalary(),
+                        createRequest.getOpenJobsLimit())
+                );
+
+        applicationService.createApplication(application);
+
+        ApplicationResponse response = applicationToResponse(application);
+
+        return ResponseEntity.created(URI.create("/user/" + username + "/application/" +
+                response.getApplicationId())).body(response);
+    }
+
+    //TODO finish the update method!!!!
+
+    @PutMapping
+    public ResponseEntity<ApplicationResponse> updateApplication(@PathVariable("username") String username,
+                                                                 @RequestBody ApplicationUpdateRequest updateRequest) {
+        return null;
+    }
+
     @GetMapping("/all")
-    public ResponseEntity<List<ApplicationResponse>> getAllApplilcations(@PathVariable("applicationId") String applicationId) {
-        List<Application> allApplications = Collections.singletonList(ApplicationService.getAllApplications(applicationId));
+    public ResponseEntity<List<ApplicationResponse>> getAllApplilcations(@PathVariable("username") String username) {
+        List<Application> allApplications = applicationService.getAllApplicationsForUser(username);
         if (allApplications == null || allApplications.isEmpty()){
             return ResponseEntity.noContent().build();
         }
-        List<Application> applicationResponses = new ArrayList<>();
-        for (Application applications : allApplications) {
-            applicationResponses.add(applicationResponses(applicationId, applications));
+        List<ApplicationResponse> applicationResponses = new ArrayList<>();
+        for (Application application : allApplications) {
+            applicationResponses.add(applicationToResponse(application));
         }
 
         return ResponseEntity.ok(applicationResponses);
     }
 
-    @GetMapping("/{evidenceId}")
-    public ResponseEntity<ApplicationResponse> getApplication(@PathVariable("applicationId") String applicationId,
-                                                            @PathVariable("userId") String userId) {
-//        TODO: need to create a proper getApplication method
-        Application application = ApplicationService.getAllApplications(applicationId);
-        if (evidence == null){
+    @GetMapping("/{applicationId}")
+    public ResponseEntity<ApplicationResponse> getApplication(@PathVariable("username") String username,
+                                                              @PathVariable("applicationId") String applicationId) {
+        Application findApplication = applicationService.getApplication(applicationId);
+        if (findApplication == null || !findApplication.getUsername().equals(username)) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(evidenceResponse(applicationId));
+
+        return ResponseEntity.ok(applicationToResponse(findApplication));
     }
 
-    @PostMapping
-    public ResponseEntity<ApplicationResponse> createApplication(@PathVariable("applicationId") String applicationId,
-                                                           @RequestBody ApplicationCreateRequest createRequest) {
-        Application application = new Application(UUID.fromString(applicationId),
-                randomUUID(),
-                LocalDateTime.now().toString(),
-                createRequest.getApplicationId(),
-                createRequest.getTimeStamp(),
-                createRequest.getResume(),
-                createRequest.getReference(),
-                createRequest.getWorkHistory(),
-                createRequest.getJobCriteria(),
-                createRequest.getCriteria(),
+    @DeleteMapping("/{applicationId}")
+    public ResponseEntity deleteApplication(@PathVariable("username") String username,
+                                                              @PathVariable("applicationId") String applicationId) {
 
-        applicationService.addNewApplication(applicationId, createRequest));
-
-        ApplicationResponse applicationResponse = applicationResponse(applicationId);
-
-        return ResponseEntity.created(URI.create("/cases/" + caseId + "/evidence/" +
-                evidenceResponse.getEvidenceId())).body(evidenceResponse);
+        Application application = applicationService.getApplication(applicationId);
+        if(application != null && application.getUsername().equals(username)) {
+            applicationService.deleteApplication(applicationId);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
     }
-//        TODO: Have Elise look at this and see if it needs to be a record or a response and if we need to create setters in Application
-    private ApplicationRecord applicationResponse(Application applicationId) {
-        ApplicationRecord response = new ApplicationRecord();
-        response.setApplicationId(applicationId.getApplicationId().toString());
-        response.setTimeStamp(applicationId.getTimeStamp());
-        response.setResume(applicationId.getResume());
-        response.setReferences(applicationId.getReferences());
-        response.setWorkHistory(applicationId.getWorkHistory());
-        response.setJobCriteria(applicationId.getJobCriteria());
-        response.setCriteria(applicationId.getCriteria());
 
+    private ApplicationResponse applicationToResponse(Application application) {
+        Resume resume = application.getResume();
+        ResumeResponse resumeResponse = new ResumeResponse();
+        resumeResponse.setFirstName(resume.getFirstName());
+        resumeResponse.setLastName(resume.getLastName());
+        resumeResponse.setHomeAddress(resume.getHomeAddress());
+        resumeResponse.setPhoneNumber(resume.getPhoneNumber());
+        resumeResponse.setEmailAddress(resume.getEmailAddress());
+        resumeResponse.setObjective(resume.getObjective());
+        resumeResponse.setEducation(resume.getEducation());
+        resumeResponse.setExperience(resume.getExperience());
+        resumeResponse.setSkills(resume.getSkills());
 
-        return response;
+        Criteria criteria = application.getJobCriteria();
+        CriteriaResponse criteriaResponse = new CriteriaResponse();
+        criteriaResponse.setPositionTitle(criteria.getPositionTitle());
+        criteriaResponse.setLocations(criteria.getLocations());
+        criteriaResponse.setMinimumSalary(criteria.getMinimumSalary());
+        criteriaResponse.setOpenJobsLimit(criteria.getOpenJobsLimit());
+
+        ApplicationResponse applicationResponse = new ApplicationResponse();
+        applicationResponse.setApplicationId(application.getApplicationId().toString());
+        applicationResponse.setTimestamp(application.getTimestamp());
+        applicationResponse.setResume(resumeResponse);
+        applicationResponse.setWorkHistory(application.getWorkHistory());
+        applicationResponse.setReferences(application.getReferences());
+        applicationResponse.setJobCriteria(criteriaResponse);
+
+        return applicationResponse;
     }
 }

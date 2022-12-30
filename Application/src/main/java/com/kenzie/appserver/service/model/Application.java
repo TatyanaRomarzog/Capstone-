@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class Application {
-    private final UUID userId;
+    private final String username;
     private final UUID applicationId;
     private final String timestamp;
     private final Resume resume;
@@ -13,9 +13,9 @@ public class Application {
     private final List<String> references;
     private final Criteria jobCriteria;
 
-    public Application(UUID userId, UUID applicationId, String timestamp, Resume resume, List<String> workHistory,
+    public Application(String username, UUID applicationId, String timestamp, Resume resume, List<String> workHistory,
                        List<String> references, Criteria criteria) {
-        this.userId = userId;
+        this.username = username;
         this.applicationId = applicationId;
         this.timestamp = timestamp;
         this.resume = resume;
@@ -24,8 +24,8 @@ public class Application {
         this.jobCriteria = criteria;
     }
 
-    public UUID getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
     public UUID getApplicationId() {

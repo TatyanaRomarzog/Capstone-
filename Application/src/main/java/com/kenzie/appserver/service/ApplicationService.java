@@ -43,10 +43,10 @@ public class ApplicationService {
         }
     }
 
-    public List<Application> getAllApplicationsForUser(String userId) {
+    public List<Application> getAllApplicationsForUser(String username) {
         List<Application> applications = new ArrayList<>();
 
-        List<ApplicationRecord> records = applicationRepository.findByUserId(userId);
+        List<ApplicationRecord> records = applicationRepository.findByUsername(username);
         for (ApplicationRecord record : records) {
             applications.add(applicationFromRecord(record));
         }
@@ -67,7 +67,7 @@ public class ApplicationService {
 
     private Application applicationFromRecord(ApplicationRecord record) {
         try {
-            return new Application(UUID.fromString(record.getUserId()),
+            return new Application(record.getUsername(),
                     UUID.fromString(record.getApplicationId()),
                     record.getTimestamp(),
                     mapper.readValue(record.getResumeAsJson(), Resume.class),
@@ -85,7 +85,7 @@ public class ApplicationService {
         try {
             ApplicationRecord record = new ApplicationRecord();
 
-            record.setUserId(application.getUserId().toString());
+            record.setUsername(application.getUsername());
             record.setApplicationId(application.getApplicationId().toString());
             record.setTimestamp(application.getTimestamp());
             record.setResumeAsJson(mapper.writeValueAsString(application.getResume()));

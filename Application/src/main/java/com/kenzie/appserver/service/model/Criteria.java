@@ -8,10 +8,10 @@ import java.util.List;
 //this is just rough draft, some of this still might change, elise
 
 public class Criteria {
-    String positionTitle;
-    List<String> locations;
-    int minimumSalary;
-    int openJobsLimit;
+    private String positionTitle;
+    private List<String> locations;
+    private int minimumSalary;
+    private int openJobsLimit;
 
     public Criteria(String positionTitle) {
         if(positionTitle == null) {
