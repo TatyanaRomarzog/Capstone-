@@ -31,9 +31,9 @@ class applicationPage extends BaseClass {
 
             if (cases) {
                 resultArea.innerHTML = `
-                    <div>ID: ${Application.applicationId}</div>
-                    <div>Title: ${Application.username}</div>
-                    <div>Post Date: ${Application.timeStamp}</div>
+                    <div>ID: ${application.applicationId}</div>
+                    <div>Title: ${application.username}</div>
+                    <div>Post Date: ${application.timeStamp}</div>
                 `
             } else {
                 resultArea.innerHTML = "No Item";
