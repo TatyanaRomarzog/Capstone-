@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-//TODO: fix the endpoints
-
 @RestController
 @RequestMapping("/user/{username}/application")
 public class ApplicationController {
@@ -57,12 +55,40 @@ public class ApplicationController {
                 response.getApplicationId())).body(response);
     }
 
-    //TODO finish the update method!!!!
-
-    @PutMapping
+    @PutMapping("/{applicationId}")
     public ResponseEntity<ApplicationResponse> updateApplication(@PathVariable("username") String username,
+                                                                 @PathVariable("applicationId") String applicationId,
                                                                  @RequestBody ApplicationUpdateRequest updateRequest) {
-        return null;
+
+        Application findApplication = applicationService.getApplication(applicationId);
+        if(findApplication == null || !findApplication.getUsername().equals(username)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Application applicationUdate = new Application(username,
+                findApplication.getApplicationId(),
+                LocalDateTime.now().toString(),
+                new Resume(updateRequest.getFirstName(),
+                        updateRequest.getLastName(),
+                        updateRequest.getHomeAddress(),
+                        updateRequest.getPhoneNumber(),
+                        updateRequest.getEmailAddress(),
+                        updateRequest.getObjective(),
+                        updateRequest.getEducation(),
+                        updateRequest.getExperience(),
+                        updateRequest.getSkills()),
+                updateRequest.getWorkHistory(),
+                updateRequest.getReferences(),
+                new Criteria(updateRequest.getPositionTitle(),
+                        updateRequest.getLocations(),
+                        updateRequest.getMinimumSalary(),
+                        updateRequest.getOpenJobsLimit())
+        );
+
+        applicationService.updateApplication(applicationUdate);
+
+        ApplicationResponse response = applicationToResponse(applicationUdate);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/all")

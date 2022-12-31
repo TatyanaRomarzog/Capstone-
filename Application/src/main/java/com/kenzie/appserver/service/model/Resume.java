@@ -11,7 +11,6 @@ public class Resume {
     private String experience;
     private String skills;
 
-
     public Resume(String firstName, String lastName, String homeAddress, String phoneNumber,
                   String emailAddress, String objective, String education, String experience, String skills) {
         this.firstName = firstName;
