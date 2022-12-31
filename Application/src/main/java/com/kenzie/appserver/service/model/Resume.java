@@ -26,7 +26,7 @@ public class Resume {
     }
 
     public Resume(Resume resume) {
-        this.firstName = resume.getLastName();
+        this.firstName = resume.getFirstName();
         this.lastName = resume.getLastName();
         this.homeAddress = resume.getHomeAddress();
         this.phoneNumber = resume.getPhoneNumber();

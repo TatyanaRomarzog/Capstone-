@@ -36,15 +36,18 @@ export default class applicationClient extends BaseClass {
         }
     }
 
-    async createApplication(title, author, description, location, timeDate, potentialSuspects, errorCallback) {
+    async createApplication(firstName, lastName, homeAddress, phoneNumber, emailAddress, objective, education, experience, skills,errorCallback) {
         try {
-            const response = await this.client.post(`cases`, {
-                title: title,
-                author: author,
-                description: description,
-                location: location,
-                timeDate: timeDate,
-                potentialSuspects: [potentialSuspects]
+            const response = await this.client.post(`applications`, {
+                firstName: firstName,
+                lastName: lastName,
+                homeAddress: homeAddress,
+                phoneNumber: phoneNumber,
+                emailAddress: emailAddress,
+                objective: objective
+                education: education
+                experience: experience
+                skills: skills
             });
             return response.data;
         } catch (error) {
