@@ -29,7 +29,7 @@ export default class applicationClient extends BaseClass {
 
     async getAllApplilcations(errorCallback) {
         try {
-            const response = await this.client.get(`/cases/all`);
+            const response = await this.client.get(`/applications/all`);
             return response.data;
         } catch(error) {
             this.handleError("getAllApplilcations", error, errorCallback);
