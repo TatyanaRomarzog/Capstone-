@@ -1,35 +1,52 @@
 package com.kenzie.appserver.controller.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class UserResponse {
+import javax.validation.constraints.NotEmpty;
 
-    @JsonProperty("username")
-    private String username;
+public class UserUpdateRequest {
 
+    @NotEmpty
+    @JsonProperty("oldPassword")
+    private String oldPassword;
+
+    @NotEmpty
+    @JsonProperty("newPassword")
+    private String newPassword;
+
+    @NotEmpty
     @JsonProperty("firstName")
     private String firstName;
 
     @JsonProperty("middleName")
     private String middleName;
 
+    @NotEmpty
     @JsonProperty("lastName")
     private String lastName;
 
+    @NotEmpty
     @JsonProperty("phoneNumber")
     private String phoneNumber;
 
+    @NotEmpty
     @JsonProperty("primaryEmail")
     private String primaryEmail;
 
-    public String getUsername() {
-        return username;
+    public String getOldPassword() {
+        return oldPassword;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
     }
 
     public String getFirstName() {
