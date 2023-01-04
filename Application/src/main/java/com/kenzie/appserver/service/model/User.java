@@ -1,10 +1,6 @@
 package com.kenzie.appserver.service.model;
 
-//todo elise
-// once I figure out the application, and the lambda, I would like to get the user implemented
-
 public class User {
-
     private final String username;
     private final String password;
     private final String firstName;
@@ -13,8 +9,8 @@ public class User {
     private final String phoneNumber;
     private final String primaryEmail;
 
-    //constructor for all arguments
-    public User(String username, String password, String firstName, String middleName, String lastName, String phoneNumber, String primaryEmail) {
+    public User(String username, String password, String firstName, String middleName, String lastName,
+                String phoneNumber, String primaryEmail) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -27,6 +23,7 @@ public class User {
     public String getUsername() {
         return username;
     }
+
     public String getPassword() {
         return password;
     }
@@ -50,7 +47,4 @@ public class User {
     public String getPrimaryEmail() {
         return primaryEmail;
     }
-
-
-//getter methods, NO setters
 }
