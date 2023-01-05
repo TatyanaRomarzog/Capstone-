@@ -18,7 +18,7 @@ class applicationPage extends BaseClass {
             document.getElementById('create-form').addEventListener('submit', this.onCreate);
             this.client = new applicationClient();
 
-            this.dataStore.addChangeListener(this.renderCase)
+            this.dataStore.addChangeListener(this.renderApplication)
 
         }
 
@@ -29,7 +29,7 @@ class applicationPage extends BaseClass {
 
             const applications = this.dataStore.get("application");
 
-            if (cases) {
+            if (applications) {
                 resultArea.innerHTML = `
                     <div>ID: ${application.applicationId}</div>
                     <div>Title: ${application.username}</div>
@@ -49,9 +49,9 @@ class applicationPage extends BaseClass {
         let id = document.getElementById("id-field").value;
 
         let result = await this.client.getCase(id, this.errorHandler);
-        this.dataStore.set("case", result);
+        this.dataStore.set("application", result);
         if (result) {
-            this.showMessage(`Got ${result.title}!`)
+            this.showMessage(`Got ${result.FirstName}!`)
         } else {
             this.errorHandler("Error doing GET!  Try again...");
         }
@@ -60,16 +60,16 @@ class applicationPage extends BaseClass {
     async onCreate(event) {
         // Prevent the page from refreshing on form submit
         event.preventDefault();
-        this.dataStore.set("case", null);
+        this.dataStore.set("application", null);
 
-        let title = document.getElementById("create-title-field").value;
+        let FirstName = document.getElementById("create-title-field").value;
         let author = document.getElementById("create-author-field").value;
         let location = document.getElementById("create-location-field").value;
         let timeDate = document.getElementById("create-time-date-field").value;
         let description = document.getElementById("create-description-field").value;
         let potentialSuspects = document.getElementById("create-potential-suspects-field").value;
 
-        const createdCase = await this.client.createCase(title, author, description, location, timeDate, potentialSuspects, this.errorHandler);
+        const createdApplication = await this.client.createApplication(title, author, description, location, timeDate, potentialSuspects, this.errorHandler);
         this.dataStore.set("case", createdCase);
 
 

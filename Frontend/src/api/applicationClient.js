@@ -32,7 +32,7 @@ export default class applicationClient extends BaseClass {
             const response = await this.client.get(`/applications/all`);
             return response.data;
         } catch(error) {
-            this.handleError("getAllApplilcations", error, errorCallback);
+            this.handleError("getAllApplications", error, errorCallback);
         }
     }
 
@@ -55,12 +55,11 @@ export default class applicationClient extends BaseClass {
         }
     }
 
-    async updateApplication(caseId, description, potentialSuspects, openCase, errorCallback) {
+    async updateApplication(username, applicationId, errorCallback) {
         try {
-            const response = await this.client.put(`/cases/${caseId}`, {
-                description: description,
-                potentialSuspects: potentialSuspects,
-                openCase: openCase
+            const response = await this.client.put(`/applications/${applicationId}`, {
+                username: username,
+                applicationId: applicationId,
             });
             return response.data;
         } catch (error) {
