@@ -6,7 +6,7 @@ class applicationPage extends BaseClass {
 
     constructor() {
             super();
-            this.bindClassMethods(['onGet', 'onCreate', 'renderCase'], this);
+            this.bindClassMethods(['onGet', 'onCreate', 'renderApplication'], this);
             this.dataStore = new DataStore();
         }
 
@@ -62,9 +62,9 @@ class applicationPage extends BaseClass {
         event.preventDefault();
         this.dataStore.set("application", null);
 
-        let FirstName = document.getElementById("create-title-field").value;
-        let author = document.getElementById("create-author-field").value;
-        let location = document.getElementById("create-location-field").value;
+        let FirstName = document.getElementById("create-FirstName-field").value;
+        let LastName = document.getElementById("create-LastName-field").value;
+        let Email = document.getElementById("create-Email-field").value;
         let timeDate = document.getElementById("create-time-date-field").value;
         let description = document.getElementById("create-description-field").value;
         let potentialSuspects = document.getElementById("create-potential-suspects-field").value;
