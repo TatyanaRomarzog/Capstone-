@@ -1,2 +1,4 @@
-package com.kenzie.appserver.repositories;public class JobPostRepository {
+package com.kenzie.appserver.repositories;
+
+public interface JobPostRepository {
 }

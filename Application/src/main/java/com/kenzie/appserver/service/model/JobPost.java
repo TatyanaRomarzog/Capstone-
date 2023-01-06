@@ -1,2 +1,4 @@
-package com.kenzie.appserver.service.model;public class JobPost {
+package com.kenzie.appserver.service.model;
+
+public class JobPost {
 }
