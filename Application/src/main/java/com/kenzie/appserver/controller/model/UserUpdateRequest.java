@@ -4,15 +4,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.NotEmpty;
 
-public class UserCreateRequest {
+public class UserUpdateRequest {
 
     @NotEmpty
-    @JsonProperty("username")
-    private String username;
+    @JsonProperty("oldPassword")
+    private String oldPassword;
 
     @NotEmpty
-    @JsonProperty("password")
-    private String password;
+    @JsonProperty("newPassword")
+    private String newPassword;
 
     @NotEmpty
     @JsonProperty("firstName")
@@ -33,20 +33,20 @@ public class UserCreateRequest {
     @JsonProperty("primaryEmail")
     private String primaryEmail;
 
-    public String getUsername() {
-        return username;
+    public String getOldPassword() {
+        return oldPassword;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
     }
 
-    public String getPassword() {
-        return password;
+    public String getNewPassword() {
+        return newPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
     }
 
     public String getFirstName() {
