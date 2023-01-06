@@ -5,17 +5,19 @@ import java.util.UUID;
 public class JobPost {
     private final String employerUsername;
     private final UUID jobPostId;
+    private final String timestamp;
     private final String positionTitle;
     private final String companyName;
     private final String location;
-    private final int proposedSalary;
+    private final Integer proposedSalary;
     private final String description;
     private final Boolean isFullTime;
 
-    public JobPost(String employerUsername, UUID jobPostId, String positionTitle, String companyName,
-                   String location, int proposedSalary, String description, Boolean isFullTime) {
+    public JobPost(String employerUsername, UUID jobPostId, String timestamp, String positionTitle, String companyName,
+                   String location, Integer proposedSalary, String description, Boolean isFullTime) {
         this.employerUsername = employerUsername;
         this. jobPostId = jobPostId;
+        this.timestamp = timestamp;
         this.positionTitle = positionTitle;
         this.companyName = companyName;
         this.location = location;
@@ -32,6 +34,10 @@ public class JobPost {
         return jobPostId;
     }
 
+    public String getTimestamp() {
+        return timestamp;
+    }
+
     public String getPositionTitle() {
         return positionTitle;
     }
@@ -44,7 +50,7 @@ public class JobPost {
         return location;
     }
 
-    public int getProposedSalary() {
+    public Integer getProposedSalary() {
         return proposedSalary;
     }
 
