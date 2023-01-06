@@ -24,7 +24,7 @@ public class UserResponse {
     @JsonProperty("primaryEmail")
     private String primaryEmail;
 
-    public String getUsername()
+    public String getUsername(){
         return username;
     }
 
