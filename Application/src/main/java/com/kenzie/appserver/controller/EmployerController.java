@@ -5,7 +5,6 @@ import com.kenzie.appserver.service.EmployerService;
 import com.kenzie.appserver.service.exceptions.UsernameAlreadyTaken;
 import com.kenzie.appserver.service.exceptions.UsernameOrPasswordIncorrect;
 import com.kenzie.appserver.service.model.Employer;
-import com.kenzie.appserver.service.model.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
