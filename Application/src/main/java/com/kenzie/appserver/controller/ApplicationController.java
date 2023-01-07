@@ -61,6 +61,7 @@ public class ApplicationController {
                                                                  @RequestBody ApplicationUpdateRequest updateRequest) {
 
         Application findApplication = applicationService.getApplication(applicationId);
+
         if(findApplication == null || !findApplication.getUsername().equals(username)) {
             return ResponseEntity.notFound().build();
         }
@@ -87,8 +88,7 @@ public class ApplicationController {
 
         applicationService.updateApplication(applicationUdate);
 
-        ApplicationResponse response = applicationToResponse(applicationUdate);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(applicationToResponse(applicationUdate));
     }
 
     @GetMapping("/all")
@@ -118,9 +118,9 @@ public class ApplicationController {
 
     @DeleteMapping("/{applicationId}")
     public ResponseEntity deleteApplication(@PathVariable("username") String username,
-                                                              @PathVariable("applicationId") String applicationId) {
-
+                                            @PathVariable("applicationId") String applicationId) {
         Application application = applicationService.getApplication(applicationId);
+
         if(application != null && application.getUsername().equals(username)) {
             applicationService.deleteApplication(applicationId);
             return ResponseEntity.noContent().build();
