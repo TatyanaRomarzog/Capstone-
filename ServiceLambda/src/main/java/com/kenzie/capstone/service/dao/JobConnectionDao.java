@@ -1,2 +1,4 @@
-package com.kenzie.capstone.service.dao;public class JobConnectionDao {
+package com.kenzie.capstone.service.dao;
+
+public class JobConnectionDao {
 }
