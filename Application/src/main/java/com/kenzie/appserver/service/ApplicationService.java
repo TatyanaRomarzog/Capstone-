@@ -20,9 +20,9 @@ public class ApplicationService {
     private ObjectMapper mapper;
 
     @Autowired
-    public ApplicationService(ApplicationRepository applicationRepository, ObjectMapper mapper) {
+    public ApplicationService(ApplicationRepository applicationRepository) {
         this.applicationRepository = applicationRepository;
-        this.mapper = mapper;
+        this.mapper =  new ObjectMapper();
     }
 
     public Application createApplication(Application addApplication) {
@@ -63,6 +63,8 @@ public class ApplicationService {
 
     public void deleteApplication(String applicationId) {
         applicationRepository.deleteById(applicationId);
+        //TODO, when someone deletes an application, we need to delete the job responses connected to the lambda
+        // this needs to be implemented after we get the lambda working
     }
 
     private Application applicationFromRecord(ApplicationRecord record) {
