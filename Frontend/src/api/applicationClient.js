@@ -51,9 +51,9 @@ export default class applicationClient extends BaseClass {
                     "workHistory": [workHistory],
                     "references": [references],
                     "positionTitle":positionTitle
-
-
-
+                    "locations": [locations],
+                    "minimumSalary": minimumSalary,
+                    "openJobsLimit": openJobsLimit
 
 
                 });
