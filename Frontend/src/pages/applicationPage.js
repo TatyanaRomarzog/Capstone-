@@ -84,7 +84,7 @@ class applicationPage extends BaseClass {
 
 
         if (createdApplication) {
-            this.showMessage(`Created ${createdApplication.firstName}!`)
+            this.showMessage(`Created ${createdApplication.applicationId}!`)
         } else {
             this.errorHandler("Error creating! Try again...");
         }
