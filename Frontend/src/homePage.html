@@ -66,16 +66,24 @@ div {
 }
 </style>
 </head>
-<form>
-    <div class="container">
+<!--<form>-->
+<!--    <div class="container"><form>-->
+<!--        <button type="submit" formaction="userDashboard.html">Login</button>-->
+<!--    </form>-->
+
 
         <label>Username : </label>
         <input type="text" placeholder="Enter Username" name="username" required>
         <label>Password : </label>
         <input type="password" placeholder="Enter Password" name="password" required>
-        <button type="submit">Login</button>
+            <div class="container"><form>
+                <button type="submit" formaction="userDashboard.html">Login</button>
+            </form>
         <input type="checkbox" checked="checked"> Remember me
-        <button type="button" class="createAccount"> Create Account</button>
+                <form>
+                    <div class="container"><form>
+                        <button type="submit" formaction="registerPage.html">Create Account</button>
+                    </form>
         Forgot <a href="#"> password? </a>
     </div>
 </form>
