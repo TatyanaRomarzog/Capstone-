@@ -92,7 +92,7 @@ public class ApplicationController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<ApplicationResponse>> getAllApplilcations(@PathVariable("username") String username) {
+    public ResponseEntity<List<ApplicationResponse>> getAllApplications(@PathVariable("username") String username) {
         List<Application> allApplications = applicationService.getAllApplicationsForUser(username);
         if (allApplications == null || allApplications.isEmpty()){
             return ResponseEntity.noContent().build();

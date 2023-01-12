@@ -1,0 +1,69 @@
+<form action="//submit.form" id="EmploymentApplication100" method="post" onsubmit="return ValidateForm(this);">
+    <script type="text/javascript">
+function ValidateForm(frm) {
+if (frm.First_Name.value == "") { alert('First name is required.'); frm.First_Name.focus(); return false; }
+if (frm.Last_Name.value == "") { alert('Last name is required.'); frm.Last_Name.focus(); return false; }
+if (frm.Email_Address.value == "") { alert('Email address is required.'); frm.Email_Address.focus(); return false; }
+if (frm.Email_Address.value.indexOf("@") < 1 || frm.Email_Address.value.indexOf(".") < 1) { alert('Please enter a valid email address.'); frm.Email_Address.focus(); return false; }
+if (frm.Position.value == "") { alert('Position is required.'); frm.Position.focus(); return false; }
+if (frm.Phone.value == "") { alert('Phone is required.'); frm.Phone.focus(); return false; }
+return true; }
+</script>
+    <table border="0" cellpadding="5" cellspacing="0">
+        <tr> <td style="width: 50%">
+            <label><b>First name *</b></label><br />
+            <input name="firstName" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+        </td> <td style="width: 50%">
+            <label><b>Last Name</b></label><br />
+            <input name="lastName" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+        </td> </tr> <tr> <td colspan="2">
+        <label><b>Home Address  *</b></label><br />
+        <input name="homeAddress" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+    </td> </tr> <tr> <td>
+        <label><b>Phone *</b></label><br />
+        <input name="Phone" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>Email Address </b></label><br />
+        <input name="emailAddress" type="text" maxlength="255" value="http://" style="width:100%;max-width: 535px" />
+    </td> </tr> <tr> <td colspan="2">
+        <label name = "objective"><b>Objective</b></label><br />
+        <textarea name="objective" rows="3" cols="40" style="width:100%;max-width: 535px"></textarea>
+    </td> </tr> <tr> <td colspan="2">
+        <label name = "education"><b>Education</b></label><br />
+        <textarea name="education" rows="3" cols="40" style="width:100%;max-width: 535px"></textarea>
+    </td> </tr> <tr> <td colspan="2">
+        <label name = "experience"><b>Experience</b></label><br />
+        <textarea name="experience" rows="3" cols="40" style="width:100%;max-width: 535px"></textarea>
+    </td> </tr> <tr> <td colspan="2">
+        <label name = "workHistory"><b>Work History</b></label><br />
+        <textarea name="workHistory" rows="3" cols="40" style="width:100%;max-width: 535px"></textarea>
+    </td> </tr> <tr> <td colspan="2">
+        <label name = "references"><b>References</b></label><br />
+        <textarea name="references" rows="5" cols="40" style="width:100%;max-width: 535px"></textarea>
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>Position Seeking </b></label><br />
+        <input name="positionTitle" type="text" maxlength="255"  style="width:100%;max-width: 535px" />
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>Location Seeking </b></label><br />
+        <input name="locations" type="text" maxlength="255"  style="width:100%;max-width: 535px" />
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>Minimum Salary Seeking </b></label><br />
+        <input name="minimumSalary" type="text" maxlength="255" id="minimum-salary" style="width:100%;max-width: 535px"  />
+
+    </td> </tr> <tr> <td colspan="2" style="text-align: center;">
+
+<!--        <input name="skip_submit" type="submit" value="Save Application" />-->
+        <button type="submit" formaction="index.html">Save Application</button>
+    </td> </tr>
+    </table>
+
+
+    </td> </tr> <tr> <td colspan="2" style="text-align: center;">
+
+<!--        <input name="skip_submit" type="submit" value="Save Application" />-->
+        <button type="submit" formaction="homePage.html">Save Application</button>
+    </td> </tr>
+    </table>
+</form>
+</body>
+</html>

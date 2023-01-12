@@ -1,12 +1,12 @@
 import BaseClass from "../util/baseClass";
 import DataStore from "../util/DataStore";
-import applicationClient from "../api/applicationClient";
+import userDashboardClient from "../api/userDashboardClient";
 
-class applicationPage extends BaseClass {
+class userDashboardPage extends BaseClass {
 
     constructor() {
             super();
-            this.bindClassMethods(['onGet', 'onCreate', 'renderApplication'], this);
+            this.bindClassMethods(['onGetAllJobPosts', 'renderJobPositions'], this);
             this.dataStore = new DataStore();
         }
 
@@ -14,46 +14,63 @@ class applicationPage extends BaseClass {
      * Once the page has loaded, set up the event handlers and fetch the concert list.
      */
     async mount() {
-            document.getElementById('get-by-id-form').addEventListener('submit', this.onGet);
-            document.getElementById('create-form').addEventListener('submit', this.onCreate);
-            this.client = new applicationClient();
+            document.getElementById('open-positions').addEventListener('click', this.onGetAllJobPosts);
 
-            this.dataStore.addChangeListener(this.renderApplication)
+            this.client = new userDashboardClient();
+
+            this.dataStore.addChangeListener(this.renderJobPositions)
 
         }
 
     // Render Methods --------------------------------------------------------------------------------------------------
 
-    async renderApplication() {
-            let resultArea = document.getElementById("result-info");
+    async renderJobPositions() {
+        let resultArea = document.getElementById("open-positions-all");
 
-            const applications = this.dataStore.get("application");
+        const jobPosts = this.dataStore.get("getAllJobPosts");
+        const toArray = Object.entries(jobPosts);
+        console.log(toArray);
+        resultArea.innerHTML = "";
 
-            if (applications) {
-                resultArea.innerHTML = `
-                    <div>ID: ${application.applicationId}</div>
-                    <div>Title: ${application.username}</div>
-                    <div>Post Date: ${application.timeStamp}</div>
-                `
-            } else {
-                resultArea.innerHTML = "No Item";
+        if (jobPosts) {
+            const ul = document.createElement("ul");
+            for (let i = 0; i < jobPosts.length; i++) {
+                const li = document.createElement("li");
+                console.log("inside the for loop " + jobPosts[i]);
+                li.innerHTML = `
+                 <div>Employer: ${jobPosts.employerUsername}</div>
+//                 <div>Title: ${application.username}</div>
+//                 <div>Post Date: ${application.timeStamp}</div>
+//                 <div>ID: ${application.applicationId}</div>
+//                 <div>Title: ${application.username}</div>
+//                 <div>Post Date: ${application.timeStamp}</div>
+//                 <div>ID: ${application.applicationId}</div>
+//                 <div>Title: ${application.username}</div>
+//                 <div>Post Date: ${application.timeStamp}</div>
+                   `
+                 ul.append(li);
+
             }
+            resultArea.append(ul);
+        }else {
+            resultArea.innerHTML = "No Item";
         }
+    }
 
     // Event Handlers --------------------------------------------------------------------------------------------------
 
-    async onGet(event) {
+    async onGetAllJobPosts(event) {
+        console.log("Entering onGetAllJobPosts method")
         // Prevent the page from refreshing on form submit
         event.preventDefault();
 
-        let id = document.getElementById("id-field").value;
-
-        let result = await this.client.getApplication(id, this.errorHandler);
-        this.dataStore.set("application", result);
-        if (result) {
-            this.showMessage(`Got ${result.firstName}!`)
+        const result = await this.client.getAllJobPosts(this.errorHandler);
+        if (result && result.length > 0) {
+            this.showMessage("Listing all Job Posts");
+            this.dataStore.set("getAllJobPosts", result);
         } else {
-            this.errorHandler("Error doing GET!  Try again...");
+            this.errorHandler("Error getting all Job Posts");
+            console.log("Error getting all Job Posts");
         }
     }
 
@@ -95,8 +112,8 @@ class applicationPage extends BaseClass {
  * Main method to run when the page contents have loaded.
  */
 const main = async () => {
-    const applicationPage = new ApplicationPage();
-    applicationPage.mount();
+    const userDashboardPage = new userDashboardPage();
+    userDashboardPage.mount();
 };
 
 window.addEventListener('DOMContentLoaded', main);
