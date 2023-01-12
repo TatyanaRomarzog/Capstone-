@@ -54,7 +54,7 @@ Resources:
           Properties:
             Path: /example/
             Method: post
-  GetAllJobConnectionDataForUser:
+  GetJobConnectionDataFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ServiceLambda/build/distributions/ServiceLambda.zip
