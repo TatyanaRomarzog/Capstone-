@@ -1,7 +1,7 @@
 package com.kenzie.appserver.service;
 
 import com.kenzie.appserver.service.model.ConnectionForUser;
-import com.kenzie.capstone.service.client.JobConnectionServiceClient;
+import com.kenzie.capstone.service.client.LambdaServiceClient;
 import com.kenzie.capstone.service.model.JobConnectionData;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,12 +11,12 @@ import java.util.List;
 public class JobConnectionService {
     ApplicationService applicationService;
     JobPostService jobPostService;
-    JobConnectionServiceClient serviceClient;
+    LambdaServiceClient serviceClient;
 
     @Autowired
     public JobConnectionService(ApplicationService applicationService,
                                 JobPostService jobPostService,
-                                JobConnectionServiceClient serviceClient) {
+                                LambdaServiceClient serviceClient) {
         this.applicationService = applicationService;
         this.jobPostService = jobPostService;
         this.serviceClient = serviceClient;
