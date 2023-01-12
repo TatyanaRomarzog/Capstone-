@@ -8,10 +8,9 @@ module.exports = {
     usedExports: true
   },
   entry: {
-//    examplePage: path.resolve(__dirname, 'src', 'pages', 'examplePage.js'),
-   userDashboardPage: path.resolve(__dirname, 'src', 'pages', 'userDashboardPage.js'),
-   }
- },
+    examplePage: path.resolve(__dirname, 'src', 'pages', 'examplePage.js')
+  // userDashboardPage: path.resolve(__dirname, 'src', 'pages', 'userDashboardPage.js')
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
