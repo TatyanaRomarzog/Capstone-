@@ -2,6 +2,7 @@ package com.kenzie.appserver.controller;
 
 import com.kenzie.appserver.controller.model.*;
 import com.kenzie.appserver.service.ApplicationService;
+import com.kenzie.appserver.service.JobConnectionService;
 import com.kenzie.appserver.service.model.Application;
 import com.kenzie.appserver.service.model.Criteria;
 import com.kenzie.appserver.service.model.Resume;
@@ -19,9 +20,11 @@ import java.util.UUID;
 public class ApplicationController {
 
     private ApplicationService applicationService;
+    private JobConnectionService connectionService;
 
-    ApplicationController(ApplicationService applicationService) {
+    ApplicationController(ApplicationService applicationService, JobConnectionService connectionService) {
         this.applicationService = applicationService;
+        this.connectionService = connectionService;
     }
 
     @PostMapping

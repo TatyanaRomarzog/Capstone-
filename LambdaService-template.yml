@@ -102,3 +102,147 @@ Resources:
           Properties:
             Path: jobconnection/user/{username}
             Method: get
+  GetAllJobConnectionDataForEmployerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ServiceLambda/build/distributions/ServiceLambda.zip
+      Handler: com.kenzie.capstone.service.lambda.GetAllJobConnectionDataForEmployer
+      Runtime: java11
+      Description: Get list of Job Connection Data for given employer
+      MemorySize: 512
+      Timeout: 240
+      # Function's execution role
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AWSLambda_ReadOnlyAccess
+        - AWSXrayWriteOnlyAccess
+        - AWSLambdaVPCAccessExecutionRole
+        - AmazonS3FullAccess
+        - AmazonDynamoDBFullAccess
+      Tracing: Active
+      Events:
+        UpdateResource:
+          Type: Api
+          Properties:
+            Path: jobconnection/employer/{employerUsername}
+            Method: get
+  DeleteJobConnectionDataFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ServiceLambda/build/distributions/ServiceLambda.zip
+      Handler: com.kenzie.capstone.service.lambda.DeleteJobConnectionData
+      Runtime: java11
+      Description: Delete a Job Connection Data with given Id
+      MemorySize: 512
+      Timeout: 240
+      # Function's execution role
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AWSLambda_ReadOnlyAccess
+        - AWSXrayWriteOnlyAccess
+        - AWSLambdaVPCAccessExecutionRole
+        - AmazonS3FullAccess
+        - AmazonDynamoDBFullAccess
+      Tracing: Active
+      Events:
+        UpdateResource:
+          Type: Api
+          Properties:
+            Path: jobconnection/{connectionId}
+            Method: delete
+  DeleteJobConnectionDataForApplicationFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ServiceLambda/build/distributions/ServiceLambda.zip
+      Handler: com.kenzie.capstone.service.lambda.DeleteJobConnectionDataForApplication
+      Runtime: java11
+      Description: Delete list of Job Connection Data with given application id
+      MemorySize: 512
+      Timeout: 240
+      # Function's execution role
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AWSLambda_ReadOnlyAccess
+        - AWSXrayWriteOnlyAccess
+        - AWSLambdaVPCAccessExecutionRole
+        - AmazonS3FullAccess
+        - AmazonDynamoDBFullAccess
+      Tracing: Active
+      Events:
+        UpdateResource:
+          Type: Api
+          Properties:
+            Path: jobconnection/application/{ApplicationId}
+            Method: delete
+  DeleteJobConnectionDataForJobPostFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ServiceLambda/build/distributions/ServiceLambda.zip
+      Handler: com.kenzie.capstone.service.lambda.DeleteJobConnectionDataForJobPost
+      Runtime: java11
+      Description: Delete list of Job Connection Data with given job post id
+      MemorySize: 512
+      Timeout: 240
+      # Function's execution role
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AWSLambda_ReadOnlyAccess
+        - AWSXrayWriteOnlyAccess
+        - AWSLambdaVPCAccessExecutionRole
+        - AmazonS3FullAccess
+        - AmazonDynamoDBFullAccess
+      Tracing: Active
+      Events:
+        UpdateResource:
+          Type: Api
+          Properties:
+            Path: jobconnection/jobpost/{jobPostId}
+            Method: delete
+  CreateJobConnectionFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ServiceLambda/build/distributions/ServiceLambda.zip
+      Handler: com.kenzie.capstone.service.lambda.CreateJobConnection
+      Runtime: java11
+      Description: creates a job connection
+      MemorySize: 512
+      Timeout: 240
+      # Function's execution role
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AWSLambda_ReadOnlyAccess
+        - AWSXrayWriteOnlyAccess
+        - AWSLambdaVPCAccessExecutionRole
+        - AmazonS3FullAccess
+        - AmazonDynamoDBFullAccess
+      Tracing: Active
+      Events:
+        UpdateResource:
+          Type: Api
+          Properties:
+            Path: jobconnection
+            Method: post
+  UpdateJobConnectionFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ServiceLambda/build/distributions/ServiceLambda.zip
+      Handler: com.kenzie.capstone.service.lambda.UpdateJobConnection
+      Runtime: java11
+      Description: updates a job connection
+      MemorySize: 512
+      Timeout: 240
+      # Function's execution role
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AWSLambda_ReadOnlyAccess
+        - AWSXrayWriteOnlyAccess
+        - AWSLambdaVPCAccessExecutionRole
+        - AmazonS3FullAccess
+        - AmazonDynamoDBFullAccess
+      Tracing: Active
+      Events:
+        UpdateResource:
+          Type: Api
+          Properties:
+            Path: jobconnection/{connectionId}
+            Method: put

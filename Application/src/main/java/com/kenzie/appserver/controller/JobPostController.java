@@ -1,6 +1,7 @@
 package com.kenzie.appserver.controller;
 
 import com.kenzie.appserver.controller.model.*;
+import com.kenzie.appserver.service.JobConnectionService;
 import com.kenzie.appserver.service.JobPostService;
 import com.kenzie.appserver.service.model.JobPost;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +18,11 @@ import java.util.UUID;
 public class JobPostController {
 
     private JobPostService jobPostService;
+    private JobConnectionService connectionService;
 
-    JobPostController(JobPostService jobPostService) {
+    JobPostController(JobPostService jobPostService, JobConnectionService connectionService) {
         this.jobPostService = jobPostService;
+        this.connectionService = connectionService;
     }
 
     @PostMapping
