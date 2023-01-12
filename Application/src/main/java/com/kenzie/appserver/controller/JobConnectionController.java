@@ -1,30 +1,32 @@
 package com.kenzie.appserver.controller;
 
+import com.kenzie.appserver.controller.model.ConnectionForUserResponse;
 import com.kenzie.appserver.service.JobConnectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+//todo
 
 @RestController
 public class JobConnectionController {
 
-    private JobConnectionService connectionSerivce;
+    private JobConnectionService connectionService;
 
     @Autowired
-    JobConnectionController(JobConnectionService connectionSerivce) {
-        this.connectionSerivce = connectionSerivce;
+    JobConnectionController(JobConnectionService connectionService) {
+        this.connectionService = connectionService;
     }
 
     @GetMapping("user/{username}/jobconnection/all")
-    public ResponseEntity getAllJobsForUser(@PathVariable("username") String username) {
+    public ResponseEntity<List<ConnectionForUserResponse>> getAllJobsForUser(@PathVariable("username") String username) {
         return null;
     }
 
     @GetMapping("user/{username}/jobconnection/{connectionId}")
-    public ResponseEntity getJobForUser(@PathVariable("username") String username,
+    public ResponseEntity<ConnectionForUserResponse> getJobForUser(@PathVariable("username") String username,
                                         @PathVariable("connectionId") String connectionId) {
         return null;
     }
@@ -46,7 +48,7 @@ public class JobConnectionController {
         return null;
     }
 
-    @GetMapping("/employer/{employerUsername}/jobconnection/{connectionId}")
+    @PutMapping("/employer/{employerUsername}/jobconnection/{connectionId}")
     public ResponseEntity updateStatusOfApplicant(@PathVariable("employerUsername") String username) {
         return null;
     }

@@ -1,6 +1,7 @@
 package com.kenzie.capstone.service;
 
 import com.kenzie.capstone.service.dao.ExampleDao;
+import com.kenzie.capstone.service.dao.JobConnectionDao;
 import com.kenzie.capstone.service.model.ExampleData;
 import com.kenzie.capstone.service.model.ExampleRecord;
 import org.junit.jupiter.api.BeforeAll;
@@ -25,12 +26,14 @@ class LambdaServiceTest {
      *  ------------------------------------------------------------------------ **/
 
     private ExampleDao exampleDao;
+    private JobConnectionDao connectionDao;
     private LambdaService lambdaService;
 
     @BeforeAll
     void setup() {
         this.exampleDao = mock(ExampleDao.class);
-        this.lambdaService = new LambdaService(exampleDao);
+        this.connectionDao = mock(JobConnectionDao.class);
+        this.lambdaService = new LambdaService(exampleDao, connectionDao);
     }
 
     @Test
