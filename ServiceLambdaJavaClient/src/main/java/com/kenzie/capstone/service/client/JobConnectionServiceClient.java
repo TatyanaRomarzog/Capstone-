@@ -1,4 +1,5 @@
 package com.kenzie.capstone.service.client;
 
-public class jobConnectionServiceClient {
-}
+//public class jobConnectionServiceClient {
+//
+//}
