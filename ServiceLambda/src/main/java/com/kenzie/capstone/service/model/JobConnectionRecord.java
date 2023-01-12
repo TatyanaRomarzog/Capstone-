@@ -26,7 +26,7 @@ public class JobConnectionRecord {
         this.connectionId = connectionId;
     }
 
-    @DynamoDBAttribute(attributeName = "applicationId")
+    @DynamoDBIndexHashKey(globalSecondaryIndexName = "ApplicationIdIndex", attributeName = "applicationId")
     public String getApplicationId() {
         return applicationId;
     }
@@ -35,7 +35,7 @@ public class JobConnectionRecord {
         this.applicationId = applicationId;
     }
 
-    @DynamoDBAttribute(attributeName = "jobPostId")
+    @DynamoDBIndexHashKey(globalSecondaryIndexName = "JobPostIdIndex", attributeName = "jobPostId")
     public String getJobPostId() {
         return jobPostId;
     }

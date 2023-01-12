@@ -5,6 +5,10 @@ Resources:
       "AttributeDefinitions":
         - "AttributeName": "connectionId"
           "AttributeType": "S"
+        - "AttributeName": "applicationId"
+          "AttributeType": "S"
+        - "AttributeName": "jobPostId"
+          "AttributeType": "S"
         - "AttributeName": "employerUsername"
           "AttributeType": "S"
         - "AttributeName": "applicantUsername"
@@ -17,6 +21,18 @@ Resources:
       BillingMode: PAY_PER_REQUEST
       TableName: "LambdaJobConnectionTable"
       GlobalSecondaryIndexes:
+        - IndexName: "ApplicationIdIndex"
+          KeySchema:
+            - AttributeName: "applicationId"
+              KeyType: "HASH"
+          Projection:
+            ProjectionType: ALL
+        - IndexName: "JobPostIdIndex"
+          KeySchema:
+            - AttributeName: "jobPostId"
+              KeyType: "HASH"
+          Projection:
+            ProjectionType: ALL
         - IndexName: "EmployerUsernameIndex"
           KeySchema:
             - AttributeName: "employerUsername"
