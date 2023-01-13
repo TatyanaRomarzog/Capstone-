@@ -21,8 +21,10 @@ public class ApplicationController {
 
     private ApplicationService applicationService;
 
+
     ApplicationController(ApplicationService applicationService) {
         this.applicationService = applicationService;
+
     private JobConnectionService connectionService;
 
     ApplicationController(ApplicationService applicationService, JobConnectionService connectionService) {
@@ -51,7 +53,7 @@ public class ApplicationController {
                         createRequest.getLocations(),
                         createRequest.getMinimumSalary(),
                         createRequest.getOpenJobsLimit())
-                );
+        );
 
         applicationService.createApplication(application);
 
@@ -67,6 +69,7 @@ public class ApplicationController {
                                                                  @RequestBody ApplicationUpdateRequest updateRequest) {
 
         Application findApplication = applicationService.getApplication(applicationId);
+
         if(findApplication == null || !findApplication.getUsername().equals(username)) {
             return ResponseEntity.notFound().build();
         }
@@ -93,12 +96,14 @@ public class ApplicationController {
 
         applicationService.updateApplication(applicationUdate);
 
+
         ApplicationResponse response = applicationToResponse(applicationUdate);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/all")
     public ResponseEntity<List<ApplicationResponse>> getAllApplilcations(@PathVariable("username") String username) {
+
         return ResponseEntity.ok(applicationToResponse(applicationUdate));
     }
 
@@ -129,9 +134,11 @@ public class ApplicationController {
 
     @DeleteMapping("/{applicationId}")
     public ResponseEntity deleteApplication(@PathVariable("username") String username,
+
                                                               @PathVariable("applicationId") String applicationId) {
 
         Application application = applicationService.getApplication(applicationId);
+
                                             @PathVariable("applicationId") String applicationId) {
         Application application = applicationService.getApplication(applicationId);
 
