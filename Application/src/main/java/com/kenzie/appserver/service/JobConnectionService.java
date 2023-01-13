@@ -4,10 +4,11 @@ import com.kenzie.appserver.service.model.ConnectionForUser;
 import com.kenzie.capstone.service.client.LambdaServiceClient;
 import com.kenzie.capstone.service.model.JobConnectionData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class JobConnectionService {
     ApplicationService applicationService;
     JobPostService jobPostService;
