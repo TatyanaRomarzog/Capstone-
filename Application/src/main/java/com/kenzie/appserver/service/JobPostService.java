@@ -5,11 +5,12 @@ import com.kenzie.appserver.repositories.model.JobPostRecord;
 import com.kenzie.appserver.service.model.JobPost;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
+@Service
 public class JobPostService {
     private JobPostRepository jobPostRepository;
 

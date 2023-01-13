@@ -6,7 +6,9 @@ import com.kenzie.appserver.service.exceptions.UsernameAlreadyTaken;
 import com.kenzie.appserver.service.exceptions.UsernameOrPasswordIncorrect;
 import com.kenzie.appserver.service.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserService {
     private UserRepository userRepository;
 

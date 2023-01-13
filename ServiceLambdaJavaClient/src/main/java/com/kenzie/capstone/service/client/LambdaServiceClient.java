@@ -14,8 +14,8 @@ public class LambdaServiceClient {
     private static final String SET_EXAMPLE_ENDPOINT = "example";
 
 
-    //private static final String GET_JOBCONNECTION_ENDPOINT = "jobconnection/{connectionId}";
-    //private static final String SET_JOBCONNECTION_ENDPOINT = "jobconnection";
+    private static final String GET_JOBCONNECTION_ENDPOINT = "jobconnection/{connectionId}";
+    private static final String SET_JOBCONNECTION_ENDPOINT = "jobconnection";
 
     private static final String GET_CONNECTION_ENDPOINT = "jobconnection/{connectionId}";
     private static final String GET_ALL_USER_CONNECTIONS = "jobconnection/user/{username}";
