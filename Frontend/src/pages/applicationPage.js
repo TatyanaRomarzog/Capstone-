@@ -6,7 +6,11 @@ class applicationPage extends BaseClass {
 
     constructor() {
             super();
+<<<<<<< HEAD
+            this.bindClassMethods(['onGet', 'onCreate', 'renderCase'], this);
+=======
             this.bindClassMethods(['onGet', 'onCreate', 'renderApplication'], this);
+>>>>>>> main
             this.dataStore = new DataStore();
         }
 
@@ -48,10 +52,17 @@ class applicationPage extends BaseClass {
 
         let id = document.getElementById("id-field").value;
 
+<<<<<<< HEAD
+        let result = await this.client.getCase(id, this.errorHandler);
+        this.dataStore.set("application", result);
+        if (result) {
+            this.showMessage(`Got ${result.FirstName}!`)
+=======
         let result = await this.client.getApplication(id, this.errorHandler);
         this.dataStore.set("application", result);
         if (result) {
             this.showMessage(`Got ${result.firstName}!`)
+>>>>>>> main
         } else {
             this.errorHandler("Error doing GET!  Try again...");
         }
@@ -62,6 +73,21 @@ class applicationPage extends BaseClass {
         event.preventDefault();
         this.dataStore.set("application", null);
 
+<<<<<<< HEAD
+        let FirstName = document.getElementById("create-title-field").value;
+        let author = document.getElementById("create-author-field").value;
+        let location = document.getElementById("create-location-field").value;
+        let timeDate = document.getElementById("create-time-date-field").value;
+        let description = document.getElementById("create-description-field").value;
+        let potentialSuspects = document.getElementById("create-potential-suspects-field").value;
+
+        const createdApplication = await this.client.createApplication(title, author, description, location, timeDate, potentialSuspects, this.errorHandler);
+        this.dataStore.set("case", createdCase);
+
+
+        if (createdCase) {
+            this.showMessage(`Created ${createdCase.title}!`)
+=======
         let firstName = document.getElementById("create-firstName-field").value;
         let lastName = document.getElementById("create-lastName-field").value;
         let homeAddress = document.getElementById("create-homeAddress-field").value;
@@ -85,6 +111,7 @@ class applicationPage extends BaseClass {
 
         if (createdApplication) {
             this.showMessage(`Created ${createdApplication.applicationId}!`)
+>>>>>>> main
         } else {
             this.errorHandler("Error creating! Try again...");
         }
@@ -95,8 +122,13 @@ class applicationPage extends BaseClass {
  * Main method to run when the page contents have loaded.
  */
 const main = async () => {
+<<<<<<< HEAD
+    const casePage = new CasePage();
+    casePage.mount();
+=======
     const applicationPage = new ApplicationPage();
     applicationPage.mount();
+>>>>>>> main
 };
 
 window.addEventListener('DOMContentLoaded', main);

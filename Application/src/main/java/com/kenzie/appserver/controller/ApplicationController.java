@@ -2,7 +2,10 @@ package com.kenzie.appserver.controller;
 
 import com.kenzie.appserver.controller.model.*;
 import com.kenzie.appserver.service.ApplicationService;
+<<<<<<< HEAD
+=======
 import com.kenzie.appserver.service.JobConnectionService;
+>>>>>>> main
 import com.kenzie.appserver.service.model.Application;
 import com.kenzie.appserver.service.model.Criteria;
 import com.kenzie.appserver.service.model.Resume;
@@ -20,11 +23,17 @@ import java.util.UUID;
 public class ApplicationController {
 
     private ApplicationService applicationService;
+<<<<<<< HEAD
+
+    ApplicationController(ApplicationService applicationService) {
+        this.applicationService = applicationService;
+=======
     private JobConnectionService connectionService;
 
     ApplicationController(ApplicationService applicationService, JobConnectionService connectionService) {
         this.applicationService = applicationService;
         this.connectionService = connectionService;
+>>>>>>> main
     }
 
     @PostMapping
@@ -64,7 +73,10 @@ public class ApplicationController {
                                                                  @RequestBody ApplicationUpdateRequest updateRequest) {
 
         Application findApplication = applicationService.getApplication(applicationId);
+<<<<<<< HEAD
+=======
 
+>>>>>>> main
         if(findApplication == null || !findApplication.getUsername().equals(username)) {
             return ResponseEntity.notFound().build();
         }
@@ -91,11 +103,20 @@ public class ApplicationController {
 
         applicationService.updateApplication(applicationUdate);
 
+<<<<<<< HEAD
+        ApplicationResponse response = applicationToResponse(applicationUdate);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<ApplicationResponse>> getAllApplilcations(@PathVariable("username") String username) {
+=======
         return ResponseEntity.ok(applicationToResponse(applicationUdate));
     }
 
     @GetMapping("/all")
     public ResponseEntity<List<ApplicationResponse>> getAllApplications(@PathVariable("username") String username) {
+>>>>>>> main
         List<Application> allApplications = applicationService.getAllApplicationsForUser(username);
         if (allApplications == null || allApplications.isEmpty()){
             return ResponseEntity.noContent().build();
@@ -121,9 +142,15 @@ public class ApplicationController {
 
     @DeleteMapping("/{applicationId}")
     public ResponseEntity deleteApplication(@PathVariable("username") String username,
+<<<<<<< HEAD
+                                                              @PathVariable("applicationId") String applicationId) {
+
+        Application application = applicationService.getApplication(applicationId);
+=======
                                             @PathVariable("applicationId") String applicationId) {
         Application application = applicationService.getApplication(applicationId);
 
+>>>>>>> main
         if(application != null && application.getUsername().equals(username)) {
             applicationService.deleteApplication(applicationId);
             return ResponseEntity.noContent().build();

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<form action="action_page.php">
+    <div class="container">
+        <h1>Register</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+
+        < <table border="0" cellpadding="5" cellspacing="0">
+        <tr> <td style="width: 50%">
+            <label><b>First name *</b></label><br />
+            <input name="First_Name" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+        </td> <td style="width: 50%">
+            <label><b>Last name *</b></label><br />
+            <input name="Last_Name" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+        </td> </tr> <tr> <td colspan="2">
+        <label><b>Email *</b></label><br />
+        <input name="Email_Address" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+        <label><b>Password</b></label><br />
+        <input type="password" placeholder="Enter Password" name="password" required>
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>Repeat Password</b></label><br />
+        <input type="password" placeholder="Repeat Password" name="password-repeat" required>
+
+        <hr>
+
+        <button type="submit" class="RegisterButton">Register</button>
+    </div>
+
+    <div class="container signin">
+        <p>Already have an account? <a href="#">Sign in</a>.</p>
+    </div>
+</form>

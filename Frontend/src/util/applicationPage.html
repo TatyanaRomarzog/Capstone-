@@ -1,0 +1,153 @@
+<form action="//submit.form" id="EmploymentApplication100" method="post" onsubmit="return ValidateForm(this);">
+    <script type="text/javascript">
+function ValidateForm(frm) {
+if (frm.First_Name.value == "") { alert('First name is required.'); frm.First_Name.focus(); return false; }
+if (frm.Last_Name.value == "") { alert('Last name is required.'); frm.Last_Name.focus(); return false; }
+if (frm.Email_Address.value == "") { alert('Email address is required.'); frm.Email_Address.focus(); return false; }
+if (frm.Email_Address.value.indexOf("@") < 1 || frm.Email_Address.value.indexOf(".") < 1) { alert('Please enter a valid email address.'); frm.Email_Address.focus(); return false; }
+if (frm.Position.value == "") { alert('Position is required.'); frm.Position.focus(); return false; }
+if (frm.Phone.value == "") { alert('Phone is required.'); frm.Phone.focus(); return false; }
+return true; }
+</script>
+    <table border="0" cellpadding="5" cellspacing="0">
+        <tr> <td style="width: 50%">
+            <label><b>First name *</b></label><br />
+            <input name="First_Name" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+        </td> <td style="width: 50%">
+            <label><b>Last name *</b></label><br />
+            <input name="Last_Name" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+        </td> </tr> <tr> <td colspan="2">
+        <label><b>Email *</b></label><br />
+        <input name="Email_Address" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>StreetAddress *</b></label><br />
+        <input name="Street Address" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>City *</b></label><br />
+        <input name=City type="text" maxlength="100" style="width:100%;max-width: 535px" />
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>State *</b></label><br />
+        <input name="State" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>Zipcode *</b></label><br />
+        <input name="ZipCode" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>Resume </b></label><br />
+        <input name="Portfolio" type="text" maxlength="255" value="http://" style="width:100%;max-width: 535px" />
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>Position you are applying for *</b></label><br />
+        <input name="Position" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+    </td> </tr> <tr> <td>
+        <label><b>Birthday</b></label><br />
+        <input name="Birthday" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+        <label><b>When can you start?</b></label><br />
+        <input name="StartDate" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+
+    </td> </tr> <tr> <td>
+        <label><b>Phone *</b></label><br />
+        <input name="Phone" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+    </td> </tr> <tr> <td>
+        <label><b>Application Daily Limit</b></label><br />
+        <input name="Limit" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>Are you willing to relocate?</b></label><br />
+        <input name="Relocate" type="radio" value="Yes" checked="checked" /> Yes
+        <input name="Relocate" type="radio" value="No" /> No
+        <input name="Relocate" type="radio" value="NotSure" /> Not sure
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>Last company you worked for</b></label><br />
+        <input name="Organization" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+    </td> </tr> <tr> <td>
+        <label><b>Start Date</b></label><br />
+        <input name="Organization" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+        <label><b>End Date</b></label><br />
+        <input name="Organization" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+    </td> </tr> <tr> <td>
+        <label><b>Start Pay</b></label><br />
+        <input name="Start Pay" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+        <label><b>End Pay</b></label><br />
+        <input name="End Pay" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+    </td> </tr> <tr> <td>
+        <label><b>Position</b></label><br />
+        <input name="Position" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+    </td> </tr> <tr> <td>
+        <label><b>Supervisor's Name</b></label><br />
+        <input name="Supervisors_Name" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+        <label><b>Phone Number</b></label><br />
+        <input name="Phone_Number" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+    </td> </tr> <tr> <td colspan="2">
+    </td> </tr> <tr> <td colspan="2">
+        <label for="Organization"><b>Job Duties</b></label><br />
+        <textarea name="Job Duties" rows="7" cols="40" style="width:100%;max-width: 535px"></textarea>
+
+        <label><b>Previou company you worked for</b></label><br />
+        <input name="Organization" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+    </td> </tr> <tr> <td>
+        <label><b>Start Date</b></label><br />
+        <input name="Organization" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+        <label><b>End Date</b></label><br />
+        <input name="Organization" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+    </td> </tr> <tr> <td>
+        <label><b>Start Pay</b></label><br />
+        <input name="Start Pay" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+        <label><b>End Pay</b></label><br />
+        <input name="End Pay" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+    </td> </tr> <tr> <td>
+        <label><b>Position</b></label><br />
+        <input name="Position" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+    </td> </tr> <tr> <td>
+        <label><b>Supervisor's Name</b></label><br />
+        <input name="Supervisors_Name" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+        <label><b>Phone Number</b></label><br />
+        <input name="Phone_Number" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+    </td> </tr> <tr> <td colspan="2">
+        <label for="Organization"><b>Job Duties</b></label><br />
+        <textarea name="Job Duties" rows="7" cols="40" style="width:100%;max-width: 535px"></textarea>
+
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>Previous company you worked for</b></label><br />
+        <input name="Organization" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+    </td> </tr> <tr> <td>
+        <label><b>Start Date</b></label><br />
+        <input name="Organization" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+        <label><b>End Date</b></label><br />
+        <input name="Organization" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+    </td> </tr> <tr> <td>
+        <label><b>Start Pay</b></label><br />
+        <input name="Start Pay" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+        <label><b>End Pay</b></label><br />
+        <input name="End Pay" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+    </td> </tr> <tr> <td>
+        <label><b>Position</b></label><br />
+        <input name="Position" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+    </td> </tr> <tr> <td>
+        <label><b>Supervisor's Name</b></label><br />
+        <input name="Supervisors_Name" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+        <label><b>Phone Number</b></label><br />
+        <input name="Phone_Number" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>Job Duties</b></label><br />
+        <textarea name="Job Duties" rows="7" cols="40" style="width:100%;max-width: 535px"></textarea>
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>Instution Name</b></label><br />
+        <input name="Education" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+    </td> </tr> <tr> <td>
+        <label><b>Start Date</b></label><br />
+        <input name="Education" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+        <label><b>End Date</b></label><br />
+        <input name="Education" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+    </td> </tr> <tr> <td>
+        <label><b>Area of Studies</b></label><br />
+        <input name="Education" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+        <label><b>Type of Degree</b></label><br />
+        <input name="Education" type="text" maxlength="50" style="width:100%;max-width: 260px" /> </td> <td>
+
+    </td> </tr> <tr> <td colspan="2">
+        <label><b>References</b></label><br />
+        <textarea name="Reference" rows="7" cols="40" style="width:100%;max-width: 535px"></textarea>
+    </td> </tr> <tr> <td colspan="2" style="text-align: center;">
+
+        <input name="skip_submit" type="submit" value="Save Application" />
+    </td> </tr>
+    </table>
+</form>

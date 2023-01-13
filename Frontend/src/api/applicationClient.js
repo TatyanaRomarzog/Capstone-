@@ -36,6 +36,26 @@ export default class applicationClient extends BaseClass {
         }
     }
 
+<<<<<<< HEAD
+    async createApplication(firstName, lastName, homeAddress, phoneNumber, emailAddress, objective, education, experience, skills,errorCallback) {
+        try {
+            const response = await this.client.post(`applications`, {
+                firstName: firstName,
+                lastName: lastName,
+                homeAddress: homeAddress,
+                phoneNumber: phoneNumber,
+                emailAddress: emailAddress,
+                objective: objective
+                education: education
+                experience: experience
+                skills: skills
+            });
+            return response.data;
+        } catch (error) {
+            this.handleError("createApplication", error, errorCallback);
+        }
+    }
+=======
      async createApplication(firstName, lastName, homeAddress, phoneNumber, emailAddress, objective, education, experience, skills,errorCallback) {
             try {
                 const response = await this.client.post(`/user/${username}/application`, {
@@ -62,6 +82,7 @@ export default class applicationClient extends BaseClass {
                 this.handleError("createApplication", error, errorCallback);
             }
         }
+>>>>>>> main
 
     async updateApplication(username, applicationId, errorCallback) {
         try {
