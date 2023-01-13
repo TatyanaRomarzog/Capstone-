@@ -22,11 +22,9 @@ public class ApplicationService {
     @Autowired
     public ApplicationService(ApplicationRepository applicationRepository, ObjectMapper mapper) {
         this.applicationRepository = applicationRepository;
-<<<<<<< HEAD
         this.mapper = mapper;
-=======
         this.mapper =  new ObjectMapper();
->>>>>>> main
+
     }
 
     public Application createApplication(Application addApplication) {
@@ -106,7 +104,7 @@ public class ApplicationService {
             throw new RuntimeException("was unable to properly turn values into json");
         }
     }
-<<<<<<< HEAD
+
 
     private Application applicationFromRecord(ApplicationRecord record) {
         try {
@@ -137,12 +135,9 @@ public class ApplicationService {
             record.setCriteriaAsJson(mapper.writeValueAsString(application.getJobCriteria()));
 
             return record;
-        }
-        catch (JsonProcessingException e) {
+        } catch (JsonProcessingException e) {
             //TODO maybe create unique runtime exception, so this can be more defined
             throw new RuntimeException("was unable to properly turn values into json");
         }
     }
-=======
->>>>>>> main
 }
