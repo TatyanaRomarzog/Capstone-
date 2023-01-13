@@ -9,9 +9,12 @@ public class UserResponse {
     @JsonProperty("username")
     private String username;
 
+<<<<<<< HEAD
     @JsonProperty("password")
     private String password;
 
+=======
+>>>>>>> main
     @JsonProperty("firstName")
     private String firstName;
 
@@ -27,7 +30,11 @@ public class UserResponse {
     @JsonProperty("primaryEmail")
     private String primaryEmail;
 
+<<<<<<< HEAD
     public String getUsername() {
+=======
+    public String getUsername(){
+>>>>>>> main
         return username;
     }
 
@@ -35,6 +42,7 @@ public class UserResponse {
         this.username = username;
     }
 
+<<<<<<< HEAD
     public String getPassword() {
         return password;
     }
@@ -43,6 +51,8 @@ public class UserResponse {
         this.password = password;
     }
 
+=======
+>>>>>>> main
     public String getFirstName() {
         return firstName;
     }

@@ -1,5 +1,5 @@
 # Step One- Fill out the two requested variables.
-export GITHUB_TOKEN='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'
+export GITHUB_TOKEN='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'
 export GITHUB_USERNAME=tiffanyhunnicutt
 # Fill out the following values
 # The path of your repo on github. Don't include the whole URL, just the part after github.com/KenzieAcademy-SoftwareEngineering/

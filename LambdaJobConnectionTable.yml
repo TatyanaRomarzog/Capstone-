@@ -1,0 +1,47 @@
+Resources:
+  UserTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      "AttributeDefinitions":
+        - "AttributeName": "connectionId"
+          "AttributeType": "S"
+        - "AttributeName": "applicationId"
+          "AttributeType": "S"
+        - "AttributeName": "jobPostId"
+          "AttributeType": "S"
+        - "AttributeName": "employerUsername"
+          "AttributeType": "S"
+        - "AttributeName": "applicantUsername"
+          "AttributeType": "S"
+      "KeySchema":
+        - "AttributeName": "connectionId"
+          "KeyType": "HASH"
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: false
+      BillingMode: PAY_PER_REQUEST
+      TableName: "LambdaJobConnectionTable"
+      GlobalSecondaryIndexes:
+        - IndexName: "ApplicationIdIndex"
+          KeySchema:
+            - AttributeName: "applicationId"
+              KeyType: "HASH"
+          Projection:
+            ProjectionType: ALL
+        - IndexName: "JobPostIdIndex"
+          KeySchema:
+            - AttributeName: "jobPostId"
+              KeyType: "HASH"
+          Projection:
+            ProjectionType: ALL
+        - IndexName: "EmployerUsernameIndex"
+          KeySchema:
+            - AttributeName: "employerUsername"
+              KeyType: "HASH"
+          Projection:
+            ProjectionType: ALL
+        - IndexName: "ApplicantUsernameIndex"
+          KeySchema:
+            - AttributeName: "applicantUsername"
+              KeyType: "HASH"
+          Projection:
+            ProjectionType: ALL
